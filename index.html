@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="/Test Kitchen/OpioidCalculator/styles.css" rel="stylesheet" />
+    <title>Opioid Calculator</title>
+  </head>
+  <body>
+    <div>
+      <h1>Opioid Calculator</h1>
+    </div>
+    <div class="row">
+      <div class="form column">
+        <label>Select Medication:</label>
+        <select id="select--med" class="form_element">
+          <option value="1">Morphine</option>
+          <option value=".1">Tramadol</option>
+          <option value="4">Hydromorphone</option>
+          <option value="1">Hydrocodone</option>
+          <option value="1.5">Oxycodone</option>
+          <option value=".15">Codiene</option>
+          <option value="4">Methadone 0-20mg</option>
+          <option value="8">Methadone 20-40mg</option>
+          <option value="10">Methadone 40-60mg</option>
+          <option value="12">Methadone 60mg+</option>
+        </select>
+
+        <form class="form_element">
+          <label>Dose (mg)</label>
+          <input type="text" id="text--dose"/>
+        </form>
+        <label for="frequency">Frequency</label>
+        <select name="Frequency" id="select--freq" class="form_element">
+          <option value="1">Once</option>
+          <option value="2">BID</option>
+          <option value="3">TID</option>
+          <option value="4">QID</option>
+        </select>
+      </div>
+      <div class="column">
+        <p id="mme"></p>
+      </div>
+    </div>
+    <button type="button" id="btn--add">
+      Add
+    </button>
+    <script src="/Test Kitchen/OpioidCalculator/live_opioid.js"></script>
+  </body>
+</html>
