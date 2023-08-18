@@ -1,43 +1,27 @@
 "use strict";
 
 // elements
-const addBtn =document.getElementById('btn--add');
-const factor = document.getElementById("select--med");
-const dose = document.getElementById("text--dose");
-const freq = document.getElementById("select--freq");
-let mme = document.getElementById("mme");
+const addBtn = document.getElementById("add-btn");
+const medSelector = document.getElementById("med-selector");
+const doseInput = document.getElementById("dose-input");
+const freqSelector = document.getElementById("frequency-selector");
 
 // variables
-let sum = 0; 
-let string; 
-const meds = [];
+const medList = [];
 
-const add = function (number) { 
-  sum += number
-  console.log("Sum: " + sum);
-  console.log("Array: " + meds);
-  mme.textContent = sum;
-  return sum;
-}
+// array functions
+const createOrder = function () {
+  const medName = medSelector.options[medSelector.selectedIndex].text;
+  const dose = Number(doseInput.value);
+  const frequency = Number(freqSelector.value);
+  const morphineEQ = Number(medSelector.value);
+  const newMedication = [medName, dose, frequency, morphineEQ];
+  return newMedication;
+};
 
-// const display = function () { 
-//   for (i in meds) {
+const addMedication = function () {
+  medList.push(createOrder());
+  console.log(medList);
+};
 
-//   }
-//   // string = JSON.stringify(meds);
-//   // mme.textContent = string;
-// }
-
-addBtn.addEventListener("click", function () {
-  let x = Number(freq.value);
-  let y = Number(dose.value);
-  let z = Number(factor.value);
-  let number = x * y * z;
-  
-  const select = document.getElementById("select--med");
-  const { text } = [...select.options].find((option) => option.selected);
-
-  meds.push([text,x,y]);
-  add(number);
-  display()
-});
+addBtn.addEventListener("click", addMedication);
