@@ -10,23 +10,20 @@ const mmeText = document.getElementById("mme-text");
 const ordersTextId = document.getElementById("orders-text-id");
 
 // values
-let medName,
-  dose,
-  frequency,
-  morphineEQ,
-  mme,
-  totalMME,
+let totalMME,
   medList = [],
   totalMEE,
   orderText = "";
 
 const createOrder = function () {
-  medName = medSelector.options[medSelector.selectedIndex].text;
-  dose = Number(doseInput.value);
-  frequency = Number(freqSelector.value);
-  morphineEQ = Number(medSelector.value);
-  mme = dose * frequency * morphineEQ;
-  return [medName, dose, frequency, mme];
+  const medName = medSelector.options[medSelector.selectedIndex].text;
+  const dose = Number(doseInput.value);
+  const frequency = Number(freqSelector.value);
+  const morphineEQ = Number(medSelector.value);
+  const mme = dose * frequency * morphineEQ;
+  const stringVal = `${medName} ${dose}mg every ${24 / frequency} hours.`;
+
+  return [medName, dose, frequency, mme, stringVal];
 };
 
 const setTotalMME = function () {
@@ -39,19 +36,13 @@ const setTotalMME = function () {
 
 const addMedication = function () {
   medList.push(createOrder());
+  console.log(medList);
   showMME();
-  showOrder();
 };
 
 const showMME = function () {
   setTotalMME();
   mmeText.innerText = totalMEE;
-};
-
-const showOrder = function () {
-  ordersTextId.innerText += `${medName} ${dose}mg every ${
-    24 / frequency
-  } hours is ${mme} MME.\n`;
 };
 
 const reset = function () {
@@ -63,5 +54,6 @@ const reset = function () {
 };
 
 addBtn.addEventListener("click", addMedication);
-
 resetBtn.addEventListener("click", reset);
+
+
