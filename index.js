@@ -9,50 +9,46 @@ const freqSelector = document.getElementById("frequency-selector");
 const mmeText = document.getElementById("mme-text");
 const ordersTextId = document.getElementById("orders-text-id");
 
-// variables
-let medList = [];
-let totalMEE = 0;
-let orderText = "";
+// values
+let medName, dose, frequency, morphineEQ, mme, totalMME;
 
-// array functions
+// variables
+let medList = [],
+  totalMEE,
+  orderText = "";
+
 const createOrder = function () {
-  const medName = medSelector.options[medSelector.selectedIndex].text;
-  const dose = Number(doseInput.value);
-  const frequency = Number(freqSelector.value);
-  const morphineEQ = Number(medSelector.value);
-  const mme = dose * frequency * morphineEQ;
-  const newMedication = [medName, dose, frequency, mme];
-  const string = `${medName} ${dose}mg every ${
-    24 / frequency
-  } hours is ${mme} MME.\n`;
-  orderText += string;
-  return newMedication;
+  medName = medSelector.options[medSelector.selectedIndex].text;
+  dose = Number(doseInput.value);
+  frequency = Number(freqSelector.value);
+  morphineEQ = Number(medSelector.value);
+  mme = dose * frequency * morphineEQ;
+  return [medName, dose, frequency, mme];
+};
+
+const setTotalMME = function () {
+  let sum = 0;
+  for (const i of medList) {
+    sum += i[3];
+  }
+  totalMEE = sum;
 };
 
 const addMedication = function () {
   medList.push(createOrder());
-  console.log(medList);
-  getTotalMME();
   showMME();
   showOrder();
 };
 
 const showMME = function () {
+  setTotalMME();
   mmeText.innerText = totalMEE;
 };
 
 const showOrder = function () {
-  ordersTextId.innerText = orderText;
-};
-
-const getTotalMME = function () {
-  let sum = 0;
-
-  for (let i = 0; i < medList.length; i++) {
-    sum += medList[i][3];
-  }
-  totalMEE = sum;
-  return sum;
+  ordersTextId.innerText += `${medName} ${dose}mg every ${
+    24 / frequency
+  } hours is ${mme} MME.\n`;
 };
 
 const reset = function () {
@@ -64,4 +60,5 @@ const reset = function () {
 };
 
 addBtn.addEventListener("click", addMedication);
+
 resetBtn.addEventListener("click", reset);
