@@ -24,8 +24,25 @@ button {
     gap: 10px;
     background: #999;
     min-width: 30%;
-    height: 500px;
+    height: 400px;
     padding: 20px;
+}
+
+.selected {
+    filter: brightness(70%);
+}
+
+.medication-item {
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#medication-container { 
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 10px;
 }
 
 .display-container {
@@ -34,6 +51,6 @@ button {
     min-width: 50%;
     align-items: center;
     justify-content: center;
-    background: green;
+
     ;
 }
