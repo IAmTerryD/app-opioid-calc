@@ -10,10 +10,13 @@ const mmeText = document.getElementById("mme-text");
 const ordersTextId = document.getElementById("orders-text-id");
 
 // values
-let medName, dose, frequency, morphineEQ, mme, totalMME;
-
-// variables
-let medList = [],
+let medName,
+  dose,
+  frequency,
+  morphineEQ,
+  mme,
+  totalMME,
+  medList = [],
   totalMEE,
   orderText = "";
 
