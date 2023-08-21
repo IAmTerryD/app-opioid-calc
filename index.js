@@ -11,90 +11,89 @@ const doseInput = document.getElementById("dose-input");
 const freqSelector = document.getElementById("frequency-selector");
 const mmeText = document.getElementById("mme-text");
 
-// containers
+// container for delegation
 const medicationContainer = document.getElementById("medication-container");
 
 // values
-let orderNumber = 0,
-  medLabel,
-  totalMEE,
-  orderText = "";
+let orderNumber = 0; 
 
 const medList = [];
 
 const createOrder = function () {
   orderNumber++;
+
   const medName = medSelector.options[medSelector.selectedIndex].text;
   const dose = Number(doseInput.value);
   const frequency = Number(freqSelector.value);
   const morphineEQ = Number(medSelector.value);
   const mme = dose * frequency * morphineEQ;
-  medLabel = `${medName} ${dose}mg every ${24 / frequency} hours.`;
-  return [orderNumber, medName, dose, frequency, mme, medLabel];
+  const medLabel = `MME: ${mme} - ${medName} ${dose}mg every ${24 / frequency} hours.`;
+  medList.push([orderNumber, medName, dose, frequency, mme, medLabel]);
+  console.log(medList);
+  createDiv();
+  updateMMEText();
 };
 
-const setTotalMME = function () {
-  let sum = 0;
-  for (let med of medList) {
-    sum += med[4];
-    console.log(med[4]);
-  }
-  totalMEE = sum;
-};
-
-const createDiv = function () {
-  let div = `<div id="medication-${orderNumber}" class="medication-item">${medLabel} </div>`;
+const createDiv = function () { 
+  let label = medList[orderNumber-1][5];
+  let div = `<div id="medication-${orderNumber}" class="medication">${label} </div>`;
   medicationContainer.innerHTML += div;
 };
 
-const addMedication = function () {
-  medList.push(createOrder());
-  showMME();
-  createDiv();
+const calcMME = function () {
+  let totalMME = 0;
+
+  for (const i of medList) {
+    totalMME += i[4];
+    console.log(i[4]);
+  }
+  return totalMME;
 };
 
-const showMME = function () {
-  setTotalMME();
-  mmeText.innerText = totalMEE;
+const updateMMEText = function () {
+  mmeText.innerText = calcMME();
 };
 
-const showOrder = function () {
-  orderText += medList[0][4];
+const removeActive = function () { 
+  const elements = document.querySelectorAll(".active");
+  elements.forEach((element) => {
+    element.classList.remove('active');
+  })
+}
+
+const removeOrder = function () {
+  const activeElement = document.querySelector('.active');
+
+  // console.log(activeElement.id);
+  const medicationID = activeElement.id;
+  const order = Number(medicationID.charAt(medicationID.length-1));
+  const index = order - 1;
+  console.log(medList[index]);
+  medList.splice(index, 1);
+  calcMME();
+  removeDivs();
+  updateMMEText();
 };
 
-const removeMedOrder = function () {
-  const selectedElements = document.querySelectorAll(".selected");
-  let idString, orderNumber;
-  selectedElements.forEach((e) => {
-    idString = e.id;
-    orderNumber = Number(idString.charAt(idString.length - 1));
-    let number = orderNumber - 1;
-    medList.splice(number, 1);
-  });
-  setTotalMME();
-  showMME();
-  removeDiv();
-};
 
-
-const removeDiv = function () { 
-  const selectedElements = document.querySelectorAll(".selected");
+const removeDivs = function () { 
+  const selectedElements = document.querySelectorAll(".active");
   selectedElements.forEach((n) => n.remove());
 }
 
 const reset = function () {
-  orderText = "";
   medList = [];
-  totalMEE = 0;
   mmeText.innerText = "";
 };
 
-addBtn.addEventListener("click", addMedication);
-removeBtn.addEventListener("click", removeMedOrder);
+addBtn.addEventListener("click", createOrder);
+removeBtn.addEventListener("click", removeOrder);
 resetBtn.addEventListener("click", reset);
 
-medicationContainer.addEventListener("click", function (event) {
-  if (event.target && event.target.tagName == "DIV") {
-    event.target.classList.toggle("selected");
-  }
-});
+medicationContainer.addEventListener("click", e => {
+    removeActive();
+    if (e.target && e.target.tagName == "DIV") {
+      e.target.classList.toggle("active");
+    }
+  });
+
