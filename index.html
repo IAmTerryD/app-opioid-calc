@@ -12,52 +12,69 @@
 
   <body>
     <header>
-      <h1>Opioid Calculator</h1>
+      <h1>Opioid Calculator Test Page</h1>
     </header>
-    <div class="app-container">
-      <div class="input-container">
-        <div class="input-box">
-          <label>Select Medication:</label>
-          <select id="med-selector">
-            <option value=1>Morphine</option>
-            <option value=.1>Tramadol</option>
-            <option value="4">Hydromorphone</option>
-            <option value="1">Hydrocodone</option>
-            <option value="1.5">Oxycodone</option>
-            <option value=".15">Codiene</option>
-            <option value="4">Methadone 0-20mg</option>
-            <option value="8">Methadone 20-40mg</option>
-            <option value="10">Methadone 40-60mg</option>
-            <option value="12">Methadone 60mg+</option>
-          </select>
-        </div>
+    <div class="horizontal-container">
+
+      <div class="vertical-container">
+
+        <!-- Start Input Box  -->
         <div class="input-box">
 
-          <label>Dose (mg)</label>
-          <input type="text" id="dose-input" />
-        </div>
-        <div class="input-box">
+          <div class="labeled-input">
+            <label>Select Medication:</label>
+            <select id="med-selector">
+              <option value=1>Morphine</option>
+              <option value=.1>Tramadol</option>
+              <option value="4">Hydromorphone</option>
+              <option value="1">Hydrocodone</option>
+              <option value="1.5">Oxycodone</option>
+              <option value=".15">Codiene</option>
+              <option value="4">Methadone 0-20mg</option>
+              <option value="8">Methadone 20-40mg</option>
+              <option value="10">Methadone 40-60mg</option>
+              <option value="12">Methadone 60mg+</option>
+            </select>
+          </div>
 
-          <label for="frequency">Frequency</label>
-          <select name="frequency" id="frequency-selector">
-            <option value="1">Once</option>
-            <option value="2">BID</option>
-            <option value="3">TID</option>
-            <option value="4">QID</option>
-          </select>
+
+          <div class="labeled-input">
+
+            <label>Dose (mg)</label>
+            <input type="text" id="dose-input" />
+          </div>
+
+          <div class="labeled-input">
+            <label>Frequency</label>
+            <select name="frequency" id="frequency-selector">
+              <option value="1">Once</option>
+              <option value="2">BID</option>
+              <option value="3">TID</option>
+              <option value="4">QID</option>
+            </select>
+          </div>
+
+          <div class="button-row">
+            <button id="add-btn">Submit</button>
+            <button id="remove-btn">Remove</button>
+            <button id="reset-btn">Reset</button>
+          </div>
+
         </div>
-        <button id="add-btn">Submit</button>
-        <button id="remove-btn">Remove</button>
-        <button id="reset-btn">Reset</button>
-      </div>
+
       <div class="display-container">
-        <p id="mme-text"></p>
+        <div id="mme-box" class="hidden">
+          <p id="mme-text"></p>
+        </div>
+
         <div id="medication-container">
+
         </div>
       </div>
-
+<!-- End Vertical Container -->
     </div>
     <script type="module" src="/index.js"></script>
+</div>
 </div>
 </body>
 
