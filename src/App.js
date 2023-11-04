@@ -3,9 +3,10 @@ import AddMedicationButton from './Components/AddMedicationButton';
 import FrequencySelector from './Components/FrequencySelector';
 import MedicationSelector from './Components/MedicationSelector';
 import DoseInput from './Components/DoseInput';
+import MedicationList from './Components/MedicationList';
 
 const App = () => {
-    const [setMedications] = useState([]);
+    const [medications, setMedications] = useState([]);
     const [medicationName, setMedicationName] = useState("");
     const [morphineFactor, setMorphineFactor] = useState(0);
     const [doseFrequency, setDoseFrequency] = useState(0);
@@ -75,6 +76,8 @@ const App = () => {
                     <AddMedicationButton handleAddMedication={handleAddMedication} />
                 </span>
             </div>
+            
+            <MedicationList medications={medications}></MedicationList>
         </div >
     );
 }
