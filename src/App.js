@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import AddMedicationButton from './AddMedicationButton';
-import FrequencySelector from './FrequencySelector';
-import MedicationSelector from './MedicationSelector';
-import DoseInput from './DoseInput';
+import AddMedicationButton from './Components/AddMedicationButton';
+import FrequencySelector from './Components/FrequencySelector';
+import MedicationSelector from './Components/MedicationSelector';
+import DoseInput from './Components/DoseInput';
 
 const App = () => {
-    const [medications, setMedications] = useState([]);
+    const [setMedications] = useState([]);
     const [medicationName, setMedicationName] = useState("");
     const [morphineFactor, setMorphineFactor] = useState(0);
     const [doseFrequency, setDoseFrequency] = useState(0);
