@@ -1,8 +1,8 @@
 const DoseInput = ({ handleDoseChange }) => {
     return (
         <>
-            <input placeholder='Enter dosage' onChange={handleDoseChange} />
-            
+            <input className='dose' placeholder="0" onChange={handleDoseChange} />
+
             <select>
                 <option>mg</option>
                 <option>mcg</option>

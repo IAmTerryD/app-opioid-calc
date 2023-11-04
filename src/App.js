@@ -6,9 +6,9 @@ import DoseInput from './DoseInput';
 
 const App = () => {
     const [medications, setMedications] = useState([]);
-    const [medicationName, setMedicationName] = useState("Morphine");
-    const [morphineFactor, setMorphineFactor] = useState(1);
-    const [doseFrequency, setDoseFrequency] = useState(1);
+    const [medicationName, setMedicationName] = useState("");
+    const [morphineFactor, setMorphineFactor] = useState(0);
+    const [doseFrequency, setDoseFrequency] = useState(0);
     const [dose, setDose] = useState(0);
 
     function handleNameChange(event) {
@@ -48,19 +48,34 @@ const App = () => {
         setMedications((oldArrayState) => [...oldArrayState, medication]);
     };
 
-
     return (
-        <div className='container'>
-            <MedicationSelector handleFactorChange={handleFactorChange} handleNameChange={handleNameChange} />
+        <div className='d-flex align-items-center justify-content-center'
+            style={{ height: "100vh" }}>
 
-            <DoseInput handleDoseChange={handleDoseChange} />
+            < div className='row' >
+                <span className='d-flex justify-content-center'>
+                    <MedicationSelector handleFactorChange={handleFactorChange} handleNameChange={handleNameChange} />
+                </span>
+            </div >
 
-            <FrequencySelector handleFrequencyChange={handleFrequencyChange} />
+            <div className='row'>
+                <div className='d-flex justify-content-center'>
+                    <DoseInput handleDoseChange={handleDoseChange} />
+                </div>
+            </div>
 
-            <AddMedicationButton handleAddMedication={handleAddMedication} />
+            <div className='row'>
+                <span className='d-flex justify-content-center'>
+                    <FrequencySelector handleFrequencyChange={handleFrequencyChange} />
+                </span>
+            </div>
 
-        </div>
-
+            <div className='row'>
+                <span className='d-flex justify-content-center'>
+                    <AddMedicationButton handleAddMedication={handleAddMedication} />
+                </span>
+            </div>
+        </div >
     );
 }
 

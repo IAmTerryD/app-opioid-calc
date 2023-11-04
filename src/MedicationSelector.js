@@ -2,11 +2,12 @@ const MedicationSelector = ({ handleFactorChange, handleNameChange }) => {
 
     return (
         <>
-            <select onChange={(e) => {
+            <select className="medication" onChange={(e) => {
                 handleFactorChange(e);
                 handleNameChange(e);
             }
             }>
+                <option>select medication</option>
                 <option value={1}>Morphine </option>
                 <option value={.1}>Tramadol </option>
                 <option value={4}>Hydromorphone</option>

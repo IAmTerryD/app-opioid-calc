@@ -21,17 +21,37 @@ code {
 /* display none removes arrow on selector */
 select {
   border: none;
+  text-align: center;
   color: #ff6600;
   ;
 
-
-  /* To center text in a select element */
-  /* text-align-last: center; */
   letter-spacing: .05em;
   /* padding: 0 .001em; */
 
   /* turns off the thick border after selecting an option */
   outline: none;
+}
+
+.medication {
+  /* moves selection text to the right */
+  text-align: center;
+  width: 10rem !important;
+}
+
+.dose {
+  /* moves selection text to the right */
+  width: 2rem !important;
+  border: none;
+  border-bottom: 1px solid red;
+  text-align: center;
+
+  /* outline: none !important; */
+}
+
+
+.dose:focus {
+  /* turns off the thick border after selecting an option */
+  outline: transparent !important;
 }
 
 button {
