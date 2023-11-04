@@ -1,4 +1,3 @@
-"use strict";
 
 // buttons
 const addBtn = document.getElementById("add-btn");
