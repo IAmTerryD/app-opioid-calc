@@ -47,7 +47,7 @@ export default function Form({ onAddMedication }) {
                 <option value={1}>Morphine </option>
                 <option value={.1}>Tramadol </option>
                 <option value={4}>Hydromorphone</option>
-                <option value={1}>Hydrocodone</option>
+                <option value={1}>Hydrocodowne</option>
                 <option value={1.5}>Oxycodone</option>
                 <option value={.15}>Codiene</option>
                 <option value={4}>Methadone 0-20mg</option>
