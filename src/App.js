@@ -30,9 +30,15 @@ export default function App() {
     return (
         <div className='d-flex align-items-center justify-content-center'
             style={{ height: "100vh" }}>
-            <Form onAddMedication={handleAddMedication}></Form>
-            <MedicationList medications={medications} onDeleteItem={handleDeleteItem}></MedicationList>
-            {total}
+            <Form onAddMedication={handleAddMedication} />
+
+            <MedicationList
+                medications={medications}
+                onDeleteItem={handleDeleteItem} />
+
+            <div className='total-morphine'>
+                Total Morphine Equivalents: {total}
+            </div>
 
         </div >
     );

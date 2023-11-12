@@ -22,11 +22,8 @@ code {
 select {
   border: none;
   text-align: center;
-  color: #ff6600;
-  ;
 
   letter-spacing: .05em;
-  /* padding: 0 .001em; */
 
   /* turns off the thick border after selecting an option */
   outline: none;
@@ -42,7 +39,6 @@ select {
   /* moves selection text to the right */
   width: 2rem !important;
   border: none;
-  border-bottom: 1px solid red;
   text-align: center;
 
   /* outline: none !important; */
@@ -55,8 +51,6 @@ select {
 }
 
 button {
-  color: #ff6600;
-  border: 1px solid #ff6600;
   border-radius: 5px;
   background-color: transparent;
   padding: .5em 1em;
