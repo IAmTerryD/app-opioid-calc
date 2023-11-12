@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Comfortaa', sans-serif !important;
+  font-size: .9em !important;
+  letter-spacing: .1rem !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+  list-style-type: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* display none removes arrow on selector */
+select {
+  border: none;
+  text-align: center;
+
+  letter-spacing: .05em;
+
+  /* turns off the thick border after selecting an option */
+  outline: none;
+}
+
+.medication {
+  /* moves selection text to the right */
+  text-align: center;
+  width: 10rem !important;
+}
+
+.dose {
+  /* moves selection text to the right */
+  width: 2rem !important;
+  border: none;
+  text-align: center;
+
+  /* outline: none !important; */
+}
+
+
+.dose:focus {
+  /* turns off the thick border after selecting an option */
+  outline: transparent !important;
+}
+
+button {
+  border-radius: 5px;
+  background-color: transparent;
+  padding: .5em 1em;
+  letter-spacing: .1rem;
+}
+
+.space {
+  padding: .5em 1em;
+  color: transparent;
+}
+
+.footer {
+  position: absolute !important;
+  bottom: 0 !important;
+}
